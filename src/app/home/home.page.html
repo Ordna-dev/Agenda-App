@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Mis Contactos
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,45 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Mis Contactos</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card *ngFor="let contacto of contactos">
+    <img [src]="contacto.foto">
+    <ion-card-header>
+      <ion-card-title>
+        {{ contacto.nombre }}
+      </ion-card-title>
+      <ion-card-subtitle>
+        {{ contacto.facebook }}
+      </ion-card-subtitle>
+      {{ contacto.twitter }}
+    </ion-card-header>
+  </ion-card>
+</ion-content>
+
+<ion-content>
+  <ion-item>
+    <ion-input placeholder="nombre" #nombre></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="telefono" #telefono></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="correo" #correo></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="facebook" #facebook></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="linkedin" #linkedin></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="twitter" #twitter></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Url de foto" #foto></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="post(nombre, telefono, correo, facebook, linkedin, twitter, foto)">Añadir</ion-button>
 </ion-content>
